@@ -1,0 +1,25 @@
+telegram:
+  api_id: 123456            # возьмите на my.telegram.org (API development tools)
+  api_hash: "0123456789abcdef0123456789abcdef"
+  session: "tg_session"     # имя локального .session файла
+
+output:
+  dir: "channels"           # куда сохранять .md
+  timezone: "Europe/Berlin" # таймзона для дат
+  date_format: "%Y-%m-%d %H:%M"
+  include_service_messages: false  # системные события (join/leave/пин и т.п.)
+  reverse_order: false      # false = новые сверху, true = от старых к новым
+  link_to_messages: true    # добавлять ссылку на оригинал (для публичных каналов)
+
+channels:
+  - id: "@durov"            # можно @username, t.me/ссылка или numeric id
+    filename: null          # явно задать имя файла без расширения (опционально)
+    limit: 0                # 0 или null = без ограничения
+    oldest_date: "2024-01-01"  # от какой даты включительно (ISO 8601), опц.
+    newest_date: null          # до какой даты включительно, опц.
+
+  - id: "https://t.me/example_channel"
+    filename: "example-channel"
+    limit: 500
+    oldest_date: null
+    newest_date: null
