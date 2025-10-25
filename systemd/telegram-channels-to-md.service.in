@@ -1,0 +1,13 @@
+[Unit]
+Description=Export Telegram channels to Markdown (python_telegram_channels_to_md)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=@REPO_DIR@
+ExecStart=/usr/bin/env bash -lc 'cd "@REPO_DIR@" && if [ -x ".venv/bin/python" ]; then .venv/bin/python download_channels.py; else python3 download_channels.py; fi'
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

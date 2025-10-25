@@ -6,9 +6,27 @@ PIP := $(VENV_DIR)/bin/pip
 
 PROJECT := python_telegram_channels_to_md
 
+# Systemd/unit vars
+REPO_DIR := $(shell pwd)
+UNIT_NAME := telegram-channels-to-md
+SERVICE_SRC := systemd/$(UNIT_NAME).service.in
+TIMER_SRC := systemd/$(UNIT_NAME).timer.in
+
+# Installation params
+SCOPE ?= user              # user|system
+TIMER_CALENDAR ?= daily    # e.g. daily or "*-*-* 03:00"
+
+ifeq ($(SCOPE),user)
+  UNIT_DIR := $(HOME)/.config/systemd/user
+  SYSTEMCTL := systemctl --user
+else
+  UNIT_DIR := /etc/systemd/system
+  SYSTEMCTL := sudo systemctl
+endif
+
 .DEFAULT_GOAL := help
 
-.PHONY: help init venv install run config clean purge
+.PHONY: help init venv install run config clean purge install-systemd uninstall-systemd systemd-status systemd-run-once
 
 help:
 	@echo "Доступные цели:"
@@ -46,3 +64,28 @@ clean:
 
 purge: clean
 	@rm -rf "$(VENV_DIR)"
+
+install-systemd:
+	@echo "Установка systemd юнитов в $(SCOPE) scope; UNIT_DIR=$(UNIT_DIR)"
+	@mkdir -p "$(UNIT_DIR)"
+	@sed -e 's|@REPO_DIR@|$(REPO_DIR)|g' "$(SERVICE_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).service"
+	@sed -e 's|@TIMER_CALENDAR@|$(TIMER_CALENDAR)|g' "$(TIMER_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).timer"
+	@$(SYSTEMCTL) daemon-reload
+	@$(SYSTEMCTL) enable --now "$(UNIT_NAME).timer"
+	@echo "Готово: таймер запущен. Календарь: $(TIMER_CALENDAR)"
+
+uninstall-systemd:
+	@echo "Отключение и удаление systemd юнитов из $(UNIT_DIR)"
+	-@$(SYSTEMCTL) disable --now "$(UNIT_NAME).timer"
+	-@$(SYSTEMCTL) stop "$(UNIT_NAME).service"
+	@rm -f "$(UNIT_DIR)/$(UNIT_NAME).timer" "$(UNIT_DIR)/$(UNIT_NAME).service"
+	@$(SYSTEMCTL) daemon-reload
+	@echo "Готово: юниты удалены."
+
+systemd-status:
+	-@$(SYSTEMCTL) status "$(UNIT_NAME).timer"
+	-@$(SYSTEMCTL) status "$(UNIT_NAME).service"
+	-@$(SYSTEMCTL) list-timers --all | grep -E '(^| )$(UNIT_NAME)\.timer' || true
+
+systemd-run-once:
+	@$(SYSTEMCTL) start "$(UNIT_NAME).service"

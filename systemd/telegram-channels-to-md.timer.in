@@ -1,0 +1,10 @@
+[Unit]
+Description=Run export of Telegram channels daily (python_telegram_channels_to_md)
+
+[Timer]
+OnCalendar=@TIMER_CALENDAR@
+Persistent=true
+Unit=telegram-channels-to-md.service
+
+[Install]
+WantedBy=timers.target
