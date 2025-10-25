@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=@REPO_DIR@
-ExecStart=/usr/bin/env bash -lc 'cd "@REPO_DIR@" && if [ -x ".venv/bin/python" ]; then .venv/bin/python download_channels.py; else python3 download_channels.py; fi'
+ExecStart=/usr/bin/env bash -lc 'bash "@REPO_DIR@/scripts/export_and_push.sh" "@REPO_DIR@"'
 Environment=PYTHONUNBUFFERED=1
 
 [Install]

@@ -30,11 +30,15 @@ endif
 
 help:
 	@echo "Доступные цели:"
-	@echo "  make init     - создать venv, установить зависимости, скопировать config.yaml если отсутствует"
-	@echo "  make run      - запустить экспорт каналов"
-	@echo "  make clean    - удалить артефакты (кэш .pyc, __pycache__)"
-	@echo "  make purge    - полная очистка: clean + удаление .venv"
-	@echo "  make config   - создать config.yaml из примера, если его нет"
+	@echo "  make init               - создать venv, установить зависимости, скопировать config.yaml если отсутствует"
+	@echo "  make run                - запустить экспорт каналов"
+	@echo "  make clean              - удалить артефакты (кэш .pyc, __pycache__)"
+	@echo "  make purge              - полная очистка: clean + удаление .venv"
+	@echo "  make config             - создать config.yaml из примера, если его нет"
+	@echo "  make install-systemd    - установить systemd юниты и запустить таймер (SCOPE=user|system, TIMER_CALENDAR='daily' или '*-*-* 03:00')"
+	@echo "  make uninstall-systemd  - остановить и удалить systemd юниты"
+	@echo "  make systemd-status     - показать статус таймера и сервиса"
+	@echo "  make systemd-run-once   - однократно запустить сервис вручную"
 
 venv:
 	@if [ ! -d "$(VENV_DIR)" ]; then python3 -m venv "$(VENV_DIR)"; fi
@@ -68,6 +72,7 @@ purge: clean
 install-systemd:
 	@echo "Установка systemd юнитов в $(SCOPE) scope; UNIT_DIR=$(UNIT_DIR)"
 	@mkdir -p "$(UNIT_DIR)"
+	@chmod +x "scripts/export_and_push.sh"
 	@sed -e 's|@REPO_DIR@|$(REPO_DIR)|g' "$(SERVICE_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).service"
 	@sed -e 's|@TIMER_CALENDAR@|$(TIMER_CALENDAR)|g' "$(TIMER_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).timer"
 	@$(SYSTEMCTL) daemon-reload
