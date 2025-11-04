@@ -24,6 +24,10 @@ else
   SYSTEMCTL := sudo systemctl
 endif
 
+# Run-as params for system scope
+RUN_AS_USER ?= $(shell id -un)
+RUN_AS_HOME ?= $(shell getent passwd $(RUN_AS_USER) | cut -d: -f6)
+
 .DEFAULT_GOAL := help
 
 .PHONY: help init venv install run config clean purge install-systemd uninstall-systemd systemd-status systemd-run-once
@@ -81,7 +85,17 @@ install-systemd:
 	@echo "Установка systemd юнитов в $(SCOPE) scope; UNIT_DIR=$(UNIT_DIR)"
 	@mkdir -p "$(UNIT_DIR)"
 	@chmod +x "scripts/export_and_push.sh"
-	@sed -e 's|@REPO_DIR@|$(REPO_DIR)|g' "$(SERVICE_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).service"
+	@if [ "$(SCOPE)" = "user" ]; then \
+		sed -e 's|@REPO_DIR@|$(REPO_DIR)|g' \
+		    -e '/@RUN_AS_USER@/d' \
+		    -e '/@RUN_AS_HOME@/d' \
+		    "$(SERVICE_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).service"; \
+	else \
+		sed -e 's|@REPO_DIR@|$(REPO_DIR)|g' \
+		    -e 's|@RUN_AS_USER@|$(RUN_AS_USER)|g' \
+		    -e 's|@RUN_AS_HOME@|$(RUN_AS_HOME)|g' \
+		    "$(SERVICE_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).service"; \
+	fi
 	@sed -e 's|@TIMER_CALENDAR@|$(TIMER_CALENDAR)|g' "$(TIMER_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).timer"
 	@$(SYSTEMCTL) daemon-reload
 	@$(SYSTEMCTL) enable --now "$(UNIT_NAME).timer"
@@ -107,7 +121,17 @@ systemd-reinstall:
 	@echo "Переустановка systemd юнитов в $(SCOPE) scope; UNIT_DIR=$(UNIT_DIR)"
 	@mkdir -p "$(UNIT_DIR)"
 	@chmod +x "scripts/export_and_push.sh"
-	@sed -e 's|@REPO_DIR@|$(REPO_DIR)|g' "$(SERVICE_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).service"
+	@if [ "$(SCOPE)" = "user" ]; then \
+		sed -e 's|@REPO_DIR@|$(REPO_DIR)|g' \
+		    -e '/@RUN_AS_USER@/d' \
+		    -e '/@RUN_AS_HOME@/d' \
+		    "$(SERVICE_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).service"; \
+	else \
+		sed -e 's|@REPO_DIR@|$(REPO_DIR)|g' \
+		    -e 's|@RUN_AS_USER@|$(RUN_AS_USER)|g' \
+		    -e 's|@RUN_AS_HOME@|$(RUN_AS_HOME)|g' \
+		    "$(SERVICE_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).service"; \
+	fi
 	@sed -e 's|@TIMER_CALENDAR@|$(TIMER_CALENDAR)|g' "$(TIMER_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).timer"
 	@$(SYSTEMCTL) daemon-reload
 	@$(SYSTEMCTL) reenable "$(UNIT_NAME).timer" || true

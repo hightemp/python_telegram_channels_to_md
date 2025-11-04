@@ -1,3 +1,4 @@
 config.yaml
 tg_session.session
 .venv
+systemd/telegram-channels-to-md.env

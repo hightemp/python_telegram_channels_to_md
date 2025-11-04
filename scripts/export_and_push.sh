@@ -83,13 +83,18 @@ fi
 REMOTE="${GIT_REMOTE:-origin}"
 BRANCH_DEFAULT="$("${GIT_CMD[@]}" rev-parse --abbrev-ref HEAD)"
 BRANCH="${GIT_BRANCH:-${BRANCH_DEFAULT}}"
+PUSH_TARGET="${GIT_PUSH_URL:-${REMOTE}}"
 
-if ! "${GIT_CMD[@]}" remote get-url "${REMOTE}" >/dev/null 2>&1; then
-  echo "[WARN] Remote '${REMOTE}' not found; skipping push"
-  exit 0
+if [[ -n "${GIT_PUSH_URL:-}" ]]; then
+  echo "[INFO] Using push URL: ${GIT_PUSH_URL}"
+else
+  if ! "${GIT_CMD[@]}" remote get-url "${REMOTE}" >/dev/null 2>&1; then
+    echo "[WARN] Remote '${REMOTE}' not found; skipping push"
+    exit 0
+  fi
 fi
 
-echo "[INFO] Pushing to ${REMOTE} ${BRANCH}"
-"${GIT_CMD[@]}" push "${REMOTE}" "${BRANCH}"
+echo "[INFO] Pushing to ${PUSH_TARGET} ${BRANCH}"
+"${GIT_CMD[@]}" push "${PUSH_TARGET}" "${BRANCH}"
 
 echo "[OK] Export committed and pushed"
