@@ -33,19 +33,17 @@ fi
 echo "[INFO] Running export with ${PYTHON}"
 "${PYTHON}" download_channels.py
 
-# Allow running under different users (e.g., systemd system scope)
-git config --global --add safe.directory "${REPO_DIR}" 2>/dev/null || true
+# Подготовим вызов git без зависимости от $HOME/глобальной конфигурации
+GIT_CMD=(git -C "${REPO_DIR}" -c safe.directory="${REPO_DIR}")
 
-# Ensure git identity is set (repo-local fallback if not configured globally)
-if ! git config --get user.name >/dev/null 2>&1; then
-  git config user.name "channels-bot"
-fi
-if ! git config --get user.email >/dev/null 2>&1; then
-  git config user.email "bot@example.invalid"
-fi
+# Идентичность коммитов через переменные окружения (работает под systemd без записи конфигов)
+export GIT_AUTHOR_NAME="${GIT_AUTHOR_NAME:-channels-bot}"
+export GIT_AUTHOR_EMAIL="${GIT_AUTHOR_EMAIL:-bot@example.invalid}"
+export GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME:-$GIT_AUTHOR_NAME}"
+export GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL:-$GIT_AUTHOR_EMAIL}"
 
 # Ensure we are in a git repo or optionally initialize one
-if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+if ! "${GIT_CMD[@]}" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   if [[ "${GIT_AUTO_INIT:-0}" == "1" ]]; then
     echo "[WARN] Not a git repo, initializing (GIT_AUTO_INIT=1) in $(pwd)"
     git -c init.defaultBranch="${GIT_INIT_DEFAULT_BRANCH:-main}" init
@@ -59,10 +57,10 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 fi
 
 # Stage all changes
-git add -A
+"${GIT_CMD[@]}" add -A
 
 # If nothing staged, exit quietly
-if git diff --cached --quiet; then
+if "${GIT_CMD[@]}" diff --cached --quiet; then
   echo "[INFO] No changes to commit"
   exit 0
 fi
@@ -71,18 +69,27 @@ TS="$(date '+%Y-%m-%d %H:%M:%S %z')"
 MSG="chore(export): update channels ${TS}"
 
 echo "[INFO] Committing changes: ${MSG}"
-git commit -m "${MSG}"
+"${GIT_CMD[@]}" commit -m "${MSG}"
+
+# Configure non-interactive SSH for first-time host key acceptance and optional key path
+if [[ -z "${GIT_SSH_COMMAND:-}" ]]; then
+  GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new"
+  if [[ -n "${SSH_KEY_PATH:-}" ]]; then
+    GIT_SSH_COMMAND="${GIT_SSH_COMMAND} -i ${SSH_KEY_PATH}"
+  fi
+  export GIT_SSH_COMMAND
+fi
 
 REMOTE="${GIT_REMOTE:-origin}"
-BRANCH_DEFAULT="$(git rev-parse --abbrev-ref HEAD)"
+BRANCH_DEFAULT="$("${GIT_CMD[@]}" rev-parse --abbrev-ref HEAD)"
 BRANCH="${GIT_BRANCH:-${BRANCH_DEFAULT}}"
 
-if ! git remote get-url "${REMOTE}" >/dev/null 2>&1; then
+if ! "${GIT_CMD[@]}" remote get-url "${REMOTE}" >/dev/null 2>&1; then
   echo "[WARN] Remote '${REMOTE}' not found; skipping push"
   exit 0
 fi
 
 echo "[INFO] Pushing to ${REMOTE} ${BRANCH}"
-git push "${REMOTE}" "${BRANCH}"
+"${GIT_CMD[@]}" push "${REMOTE}" "${BRANCH}"
 
 echo "[OK] Export committed and pushed"
