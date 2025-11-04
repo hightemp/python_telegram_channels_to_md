@@ -8,6 +8,8 @@ Type=oneshot
 WorkingDirectory=@REPO_DIR@
 ExecStart=/usr/bin/env bash -lc 'bash "@REPO_DIR@/scripts/export_and_push.sh" "@REPO_DIR@"'
 Environment=PYTHONUNBUFFERED=1
+# Optional env file with git/push settings (ignored if absent)
+EnvironmentFile=-@REPO_DIR@/systemd/telegram-channels-to-md.env
 
 [Install]
 WantedBy=default.target

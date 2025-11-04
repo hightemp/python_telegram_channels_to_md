@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
+# Enable verbose debug if DEBUG=1
+if [[ "${DEBUG:-0}" == "1" ]]; then set -x; fi
 
 # Usage:
 #   export_and_push.sh [REPO_DIR]
@@ -15,6 +17,8 @@ if [[ -z "${REPO_DIR}" ]]; then
 fi
 
 cd "${REPO_DIR}"
+echo "[INFO] REPO_DIR=${REPO_DIR}"
+echo "[INFO] PWD=$(pwd)"
 
 # Choose Python interpreter
 if [[ -x ".venv/bin/python" ]]; then
@@ -38,6 +42,20 @@ if ! git config --get user.name >/dev/null 2>&1; then
 fi
 if ! git config --get user.email >/dev/null 2>&1; then
   git config user.email "bot@example.invalid"
+fi
+
+# Ensure we are in a git repo or optionally initialize one
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  if [[ "${GIT_AUTO_INIT:-0}" == "1" ]]; then
+    echo "[WARN] Not a git repo, initializing (GIT_AUTO_INIT=1) in $(pwd)"
+    git -c init.defaultBranch="${GIT_INIT_DEFAULT_BRANCH:-main}" init
+    if [[ -n "${GIT_REMOTE_URL:-}" ]]; then
+      git remote add "${GIT_REMOTE:-origin}" "${GIT_REMOTE_URL}"
+    fi
+  else
+    echo "[ERROR] Not a git repository: $(pwd). Set GIT_AUTO_INIT=1 and optionally GIT_REMOTE_URL to initialize automatically." >&2
+    exit 128
+  fi
 fi
 
 # Stage all changes

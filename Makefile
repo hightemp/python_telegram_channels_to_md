@@ -39,6 +39,14 @@ help:
 	@echo "  make uninstall-systemd  - остановить и удалить systemd юниты"
 	@echo "  make systemd-status     - показать статус таймера и сервиса"
 	@echo "  make systemd-run-once   - однократно запустить сервис вручную"
+	@echo "  make systemd-reinstall  - перегенерировать юниты и перезапустить таймер"
+	@echo "  make systemd-reload     - выполнить systemctl daemon-reload"
+	@echo "  make systemd-restart    - перезапустить сервис вручную"
+	@echo "  make systemd-env        - создать env-файл из примера (systemd/telegram-channels-to-md.env)"
+	@echo "  make install-systemd    - установить systemd юниты и запустить таймер (SCOPE=user|system, TIMER_CALENDAR='daily' или '*-*-* 03:00')"
+	@echo "  make uninstall-systemd  - остановить и удалить systemd юниты"
+	@echo "  make systemd-status     - показать статус таймера и сервиса"
+	@echo "  make systemd-run-once   - однократно запустить сервис вручную"
 
 venv:
 	@if [ ! -d "$(VENV_DIR)" ]; then python3 -m venv "$(VENV_DIR)"; fi
@@ -94,3 +102,28 @@ systemd-status:
 
 systemd-run-once:
 	@$(SYSTEMCTL) start "$(UNIT_NAME).service"
+
+systemd-reinstall:
+	@echo "Переустановка systemd юнитов в $(SCOPE) scope; UNIT_DIR=$(UNIT_DIR)"
+	@mkdir -p "$(UNIT_DIR)"
+	@chmod +x "scripts/export_and_push.sh"
+	@sed -e 's|@REPO_DIR@|$(REPO_DIR)|g' "$(SERVICE_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).service"
+	@sed -e 's|@TIMER_CALENDAR@|$(TIMER_CALENDAR)|g' "$(TIMER_SRC)" > "$(UNIT_DIR)/$(UNIT_NAME).timer"
+	@$(SYSTEMCTL) daemon-reload
+	@$(SYSTEMCTL) reenable "$(UNIT_NAME).timer" || true
+	@$(SYSTEMCTL) restart "$(UNIT_NAME).timer"
+	@echo "Готово: таймер перезапущен. Календарь: $(TIMER_CALENDAR)"
+
+systemd-reload:
+	@$(SYSTEMCTL) daemon-reload
+
+systemd-restart:
+	@$(SYSTEMCTL) restart "$(UNIT_NAME).service"
+
+systemd-env:
+	@if [ -f "systemd/telegram-channels-to-md.env.example" ] && [ ! -f "systemd/telegram-channels-to-md.env" ]; then \
+		cp "systemd/telegram-channels-to-md.env.example" "systemd/telegram-channels-to-md.env"; \
+		echo "Создан systemd/telegram-channels-to-md.env из примера"; \
+	else \
+		echo "Env файл уже существует или нет примера"; \
+	fi
