@@ -12,6 +12,22 @@
 
 
 ---
+### 2025-11-23 10:30 — Сообщение #3982 ([ссылка](https://t.me/SysadminNotes/3982))
+
+🛠 Database backups, dump files and restic.
+
+Век живи - век учись. Оказывается, restic может обрабатывать данные, перенаправленные ему из другой выполненной команды. 
+
+В статье пример использования такого подхода при резервном копировании базы данных...
+
+https://strugglers.net/posts/2025/database-backups-dump-files-and-restic/
+
+В документации...
+
+https://restic.readthedocs.io/en/stable/040_backup.html#reading-data-from-a-command
+
+  #restic #backup #database
+
 ### 2025-11-22 11:16 — Сообщение #3981 ([ссылка](https://t.me/SysadminNotes/3981))
 
 🔧 Understanding QCOW2 Risks with QEMU cache=none in Proxmox. 
