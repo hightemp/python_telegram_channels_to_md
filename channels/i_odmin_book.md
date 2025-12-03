@@ -10,6 +10,76 @@
 
 
 ---
+### 2025-12-03 10:29 — Сообщение #4316 ([ссылка](https://t.me/i_odmin_book/4316))
+
+Подборка часто используемых команд для первоначальной настройки устройств MikroTik: имя устройства, DNS сервера, Email, время, доступы и т.д.
+
+Установки имени устройства
+/system identity set name=MyHomeMikrotik
+
+Установка своих DNS серверов и отключение получения их по DHCP
+/ip dns set servers=8.8.8.8,1.1.1.1
+/ip dhcp-client set [find ] use-peer-dns=no
+
+Настройка email клиента для работы с Yandex.Mail
+Для корректной работы разрешите в настройках профиля авторизацию SMTP по обычному паролю или [рекомендуется] используйте пароли приложений (почта)
+/tool e-mail
+set address=smtp.yandex.ru from=example@yandex.ru password=example-pass port=587 start-tls=yes user=example@yandex.ru
+
+Настройка синхронизации времени по NTP и MikroTik Cloud Time (Москва)
+/system ntp client set enabled=yes server-dns-names=time.google.com,0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org
+/system clock set time-zone-autodetect=no
+/system clock set time-zone-name=Europe/Moscow
+/ip cloud set update-time=yes 
+
+Изменение количества строк системного лога
+/system logging action set memory memory-lines=10000
+
+Очистка системного лога (оставляет сообщение о смене настроек лога)
+/system logging action set memory memory-lines=1
+/system logging action set memory memory-lines=10000
+
+Контроль доступа с IP адресов домена
+Это позволяет использовать DynamicDNS для записей своего домена, и получать доступ к устройству с IP адресов, которые будут резолвится с домена. RouterOS будет сам обновлять записи и access-list при изменении записи в домене.
+
+Обратите внимание, в конце 2 строки с move. Это сделано для того, чтобы правило корректно двигалось на первое место при включенном fasttrack (то есть первое место), а также при отключенном (на нулевое место)
+
+/ip firewall address-list
+add address=access.example.con list=DomainIPsAccess
+/ip firewall filter
+add action=accept chain=input src-address-list=DomainIPsAccess comment="Allow DomainIPsAccess"
+move [find comment="Allow DomainIPsAccess"] 1
+move [find comment="Allow DomainIPsAccess"] 0
+
+Отключение ненужных служб доступа (web тоже отключается, осторожно)
+/ip service disable www,ftp,api,api-ssl,telnet
+/ip service enable ssh,winbox
+/ip service set ssh address=""
+/ip service set winbox address=""
+
+Фикс MTU (нужен редко, но метко)
+/ip firewall mangle
+add chain=postrouting out-interface-list=WAN protocol=tcp tcp-flags=syn,!ack action=change-mss new-mss=clamp-to-pmtu comment="MTU Fix" passthrough=yes
+
+Заблокировать доступ к WiFi по MAC-адресу
+/interface wireless access-list authentication=no mac-address=8A:EA:B7:2E:38:C1 
+
+Поместить клиента WiFi в отдельный VLAN по MAC-адресу
+/interface wireless access-list
+add interface=all mac-address=8A:EA:B7:2E:38:C1 vlan-id=99 vlan-mode=use-tag
+
+Настройка пароля и безопасности WiFi на default профиль
+/interface wireless security-profiles set default mode=dynamic
+-keys authentication-types=wpa2-psk unicast-ciphers=aes-ccm group-ciphers=aes-ccm
+wpa2-pre-shared-key=bigpassword
+
+Включение пробросов портов SSH
+/ip ssh set forwarding-enabled=both
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2025-12-01 12:09 — Сообщение #4315 ([ссылка](https://t.me/i_odmin_book/4315))
 
 Что происходит, когда вы вводите в браузер URL-адрес?
