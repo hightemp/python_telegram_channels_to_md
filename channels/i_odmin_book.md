@@ -10,6 +10,65 @@
 
 
 ---
+### 2025-12-14 10:23 — Сообщение #4328 ([ссылка](https://t.me/i_odmin_book/4328))
+
+50 основных команд Linux
+
+1. ls
+2. cd
+3. pwd
+4. cp
+5. mv
+6. rm
+7. mkdir
+8. rmdir
+9. touch
+10. cat
+11. nano
+12. vim
+13. grep
+14. chmod
+15. chown
+16. ps
+17. kill
+18. top
+19. df
+20. du
+21. free
+22. man
+23. history
+24. tar
+25. gzip
+26. gunzip
+27. zip
+28. unzip
+29. ping
+30. ifconfig
+31. route
+32. netstat
+33. ssh
+34. scp
+35. rsync
+36. find
+37. locate
+38. whoami
+39. sudo
+40. su
+41. useradd
+42. passwd
+43. usermod
+44. groupadd
+45. groups
+46. wget
+47. curl
+48. date
+49. cal
+50. shutdown
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2025-12-11 09:40 — Сообщение #4327 ([ссылка](https://t.me/i_odmin_book/4327))
 
 OSI vs TCP IP
