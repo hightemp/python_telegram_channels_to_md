@@ -10,6 +10,47 @@
 
 
 ---
+### 2026-01-08 12:18 — Сообщение #4344 ([ссылка](https://t.me/i_odmin_book/4344))
+
+Небольшая шпаргалка по windows firewall 
+
+Netsh
+
+включить/выключить брандмауэр
+
+netsh advfirewall set [privateprofile|publicprofile|domainprofile|currentprofile] state [on|off]
+
+
+установить действие брандмауэра по умолчанию
+
+netsh advfirewall set [privateprofile|publicprofile|domainprofile|currentprofile] firewallpolicy [allowinbound|blockinbound|blockinboundalways|notconfigured],[allowoutbound|blockoutbound|notconfigured]
+
+
+добавить правило
+
+netsh advfirewall firewall add rule name="My Application" dir=in action=allow program="C:\MyApp\MyApp.exe" enable=yes remoteip=157.60.0.1,172.16.0.0/16,LocalSubnet profile=domain
+
+
+показать все правила
+
+netsh advfirewall firewall show rule status=enabled name=all
+
+
+удалить правило
+
+netsh advfirewall firewall delete rule name=rule name protocol=udp localport=500
+
+
+
+Команды Powershell
+
+Disable-NetFirewallRule Enable-NetFirewallRule Get-NetFirewallProfile Get-NetFirewallRule Get-NetFirewallSetting - Retrieves the global firewall settings of the target computer. New-NetFirewallRule Remove-NetFirewallRule Rename-NetFirewallRule Set-NetFirewallProfile Set-NetFirewallRule Set-NetFirewallSetting Show-NetFirewallRule
+
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-01-04 13:41 — Сообщение #4343 ([ссылка](https://t.me/i_odmin_book/4343))
 
 Шпаргалка по windows CMD. Список команд cmd windows с описанием
