@@ -10,6 +10,67 @@
 
 
 ---
+### 2026-02-16 09:27 — Сообщение #4392 ([ссылка](https://t.me/i_odmin_book/4392))
+
+Шпаргалка по PostgreSQL 
+
+-- ***********************************
+-- Редактирование таблиц, расширенные возможности SELECT, функции
+-- ***********************************
+
+-- Добавление поля в таблицу
+ALTER TABLE table_name ADD COLUMN new_field
+BOOLEAN NOT NULL DEFAULT TRUE;
+
+-- добавление поля с автоинкрементом и primary key в таблицу
+ALTER TABLE test1 ADD COLUMN id SERIAL PRIMARY KEY;
+
+-- Удаление поля из таблицы
+ALTER TABLE table_name DROP COLUMN new_field;
+
+-- переименовать поле
+ALTER TABLE table_name RENAME old_field TO new_field;
+
+-- сменить тип данных
+ALTER TABLE table_name ALTER COLUMN any_field SET
+DATA TYPE VARCHAR(255);
+
+-- изменить значение по умолчанию
+ALTER TABLE table_name ALTER COLUMN any_field SET
+DEFAULT 'new value';
+
+-- добавить/удалить constraint NOT NULL
+ALTER TABLE table_name ALTER COLUMN any_field
+SET|DROP NOT NULL;
+
+-- переименовать таблицу
+ALTER TABLE table_name RENAME TO new_table_name;
+
+-- Расширенные возможности SELECT
+SELECT * FROM table WHERE field1 LIKE 'value'; -- field1 = 'value'
+SELECT * FROM table WHERE field1 LIKE 'val%'; -- field1 начинается с 'val'
+SELECT * FROM table WHERE field1 LIKE '%lue'; -- field1 заканчивается на 'lue'
+SELECT * FROM table WHERE field1 LIKE '%e%'; -- field1 содержит 'e'
+-- несколько условий
+SELECT * FROM table WHERE field1 = 'value' AND field2 > 'value2';
+SELECT * FROM table WHERE field1 = 'value' OR field2 > 'value2';
+
+-- вывод уникальных записей
+SELECT DISTINCT field1 FROM table;
+
+-- группирование записей
+
+SELECT field1, COUNT(field1) FROM table GROUP BY field1;
+-- сгруппирует записи таблицы table по полю field и выведет уникальные значения field и количество повторений
+
+SELECT field1, COUNT(field1) FROM table GROUP BY field1
+HAVING COUNT(field) > 3;
+-- сгруппирует записи таблицы table по полю field и выведет уникальные значения field и количество повторений, где количество повторений больше 3
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-02-15 10:36 — Сообщение #4391 ([ссылка](https://t.me/i_odmin_book/4391))
 
 Шпаргалка по PostgreSQL 
