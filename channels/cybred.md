@@ -4,6 +4,28 @@
 
 
 ---
+### 2026-02-25 19:01 — Сообщение #1035 ([ссылка](https://t.me/cybred/1035))
+
+Выложили доклады с конференции DEF CON 33. Она прошла в Лас-Вегасе и оказалась одной из самых крупных DEF CON за всю историю — конференцию посетили около 26 000 человек, а на YouTube уже опубликовано более 350(!) видео.
+
+Среди них много докладов на самые разные темы — от классического веба и hardware-хакинга (и куда же без AI) до совсем неожиданных направлений: гайда по отмыванию средств с помощью криптовалюты, современного подхода к кардингу и взлома физических замков в отелях.
+
+Один из участников, даже не смотря на угрозы судом, рассказал, как ему удалось разреверсить современные морские двигатели, найти способ удаленно менять их мощность, и перехватывать управление.
+
+Собрал пару интересных тем, чтобы ты мог оценить для себя:
+1. Exploiting Security Side Channels in E2E Encrypted Msngrs
+2. Mapping the Shadow War From Estonia to Ukraine
+3. Infecting the Boot to Own the Kernel
+4. New Red Team Networking Techniques for Initial Access and Evasion
+5. Breakin 'Em All – Overcoming Pokemon Go's Anti Cheat Mechanism
+6. BitUnlocker: Leverage Windows Recovery to Extract BitLocker Secrets
+7. Turning Microsoft's Login Page into our Phishing Infrastructure
+8. Tactical Flipper Zero You Have 1 Hour and No Other Equipment
+9. How malicious packages on npm bypass existing security tools
+10. TSPU: Russia's Firewall and Defending Against Digital Repression
+
+Полный плейлист со всеми докладами тут.
+
 ### 2026-02-19 13:53 — Сообщение #1034 ([ссылка](https://t.me/cybred/1034))
 
 Red Team Infrastructure The Full Picture
