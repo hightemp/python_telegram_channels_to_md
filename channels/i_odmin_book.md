@@ -10,6 +10,49 @@
 
 
 ---
+### 2026-03-03 08:05 — Сообщение #4412 ([ссылка](https://t.me/i_odmin_book/4412))
+
+Windows CMD Cheat Sheet
+
+Эти команды выполняются локально или, используя psexec из пакета Sysinternals Suite для получения оболочки, удаленно:
+
+psexec \\remote_host cmd
+
+Следующий список представляет собой компиляцию некоторых наиболее распространенных команд.
+
+Network
+Echo reply: ping 192.168.0.1
+View route to host: tracert 192.168.0.1
+Route to host with latency and network loss: pathping 192.168.0.1
+View network settings: ipconfig /all
+View TCP/UDP connections: netstat
+
+Processes
+View running processes: tasklist
+View console processes: tasklist /FI “SESSIONNAME eq Console”
+View user processes: query process user
+Kill processes by name: taskkill /F /IM processname.exe
+Kill processes by PID: taskkill /F /PID XXX
+
+Services
+Running services: net start
+
+Users
+Username: echo %username%
+list users: query user
+list sessions: query session
+logoff by user: logoff sessionnumber
+logoff by session: logoff sessionname
+
+Windows
+PC name: hostname
+Reboot immediately: shutdown -r -t 0
+Shutdown immediately: shutdown -s -t 0
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-03-02 09:57 — Сообщение #4411 ([ссылка](https://t.me/i_odmin_book/4411))
 
 Как заставить пользователя изменить пароль при следующем входе в систему
