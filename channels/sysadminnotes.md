@@ -12,6 +12,57 @@
 
 
 ---
+### 2026-03-06 07:59 — Сообщение #4007 ([ссылка](https://t.me/SysadminNotes/4007))
+
+Неделю назад писал пост в котором спрашивал, что вы читаете по темам
+
+- DevOps
+- DevSecOps 
+- Сисадминство (надеюсь оно не вымерло)
+- Сети
+
+https://t.me/tech_b0lt_Genona/6216
+
+В итоге список прям сейчас живых, активных и тематических каналов получился такой
+
+https://t.me/aws_notes
+https://t.me/bashdays
+https://t.me/bezumniy_kot_work
+https://t.me/bykvaadm
+https://t.me/cloud_sec
+https://t.me/count0_digest
+https://t.me/devopslibrary
+https://t.me/devops_sre_notes
+https://t.me/devsecops_weekly
+https://t.me/DOFH_ru
+https://t.me/etogeek
+https://t.me/ever_secure
+https://t.me/flant_ru
+https://t.me/i_DevOps
+https://t.me/ittales
+https://t.me/k8security
+https://t.me/k8sjust
+https://t.me/k8s_vk
+https://t.me/KubeArchitect
+https://t.me/KubeBuilders
+https://t.me/kubernative
+https://t.me/Kubesploit
+https://t.me/LearnKubeNews
+https://t.me/linkmeup_podcast
+https://t.me/makebreakreflect
+https://t.me/mikrotikninja
+https://t.me/monitorim_it
+https://t.me/opengrad
+https://t.me/patchcord
+https://t.me/sdnv_funkhole
+https://t.me/sysadm_in_channel
+https://t.me/srv_admin
+https://t.me/SysadminNotes
+https://t.me/tech_b0lt_Genona
+https://t.me/Undercode_ai
+
+Распространите это среди жильцов вашего ЖЭКа
+
 ### 2026-03-05 21:07 — Сообщение #4006 ([ссылка](https://t.me/SysadminNotes/4006))
 
 😈 А ещё, смотрите какая занятная попытка принести FreeBSD джейлы на Linux и MacOS...
