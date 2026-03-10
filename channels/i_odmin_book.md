@@ -10,6 +10,81 @@
 
 
 ---
+### 2026-03-10 14:15 — Сообщение #4417 ([ссылка](https://t.me/i_odmin_book/4417))
+
+Cisco Commands. IP
+
+IP Address Configuration
+
+IPv4
+Switch Interfaces
+Layer-3-Switch switchport access vlan
+Note: First you have to disable ip routing on the switch with the no ip routing command.
+
+L3-Switch(config)# interface <interface>
+L3-Switch(config-if)# no shutdown
+L3-Switch(config-if)# description <interface-description>
+L3-Switch(config-if)# switchport mode access
+L3-Switch(config-if)# switchport access vlan <vlan-number>
+
+
+Layer-3-Switch routed port
+Note: First you have to change your switchport into a routed port with the no switchport command.
+
+L3-Switch(config)# interface <interface>
+L3-Switch(config-if)# no switchport
+L3-Switch(config-if)# description <interface-description>
+L3-Switch(config-if)# ip address <ip-address> <subnet-mask>
+
+
+Switched Virtual Interface (SVI)
+Switch(config)# interface vlan <vlan-number>
+Switch(config-if)# description <vlan-interface-description>
+Switch(config-if)# ip address <ip-address> <subnet-mask>
+
+
+Router Interfaces
+Router(config)# interface <interface>
+Router(config-if)# description <interface-description>
+Router(config-if)# ip address <ip-address> <subnet-mask>
+
+
+Loopback Interfaces
+Note: An loopback interface is a stable virtual interface on which you can assign layer 3 addresses. It can be used on Cisco switches and routers.
+
+Switch-or-Router(config)#interface Loopback <loopback-number>
+Switch-or-Router(config-if)# ip address <ip-address> <subnet-mask>
+
+
+IPv6
+Switch Interfaces
+Layer-3-Switch routed port
+Note: First you have to change your switchport into a routed port with the no switchport command.
+
+Switch(config)# interface <interface>
+Switch(config-if)# no switchport
+Switch(config-if)# description <interface description>
+Switch(config-if)# ipv6 address <ip-address>/<subnet-mask>
+Switch(config-if)# ipv6 address <link-local ip-address> link-local
+
+
+Switched Virtual Interface (SVI)
+Switch(config)# interface vlan <vlan-number>
+Switch(config-if)# description <interface description>
+Switch(config-if)# ipv6 address <ip-address>/<subnet-mask>
+Switch(config-if)# ipv6 address <link-local ip-address> link-local
+
+
+Router Interfaces
+Router(config)# interface <interface>
+Router(config-if)# description <interface-description>
+Router(config-if)# ipv6 address <ip-address>/<subnet-mask>
+Router(config-if)# ipv6 address <link-local-ip-address> link-local
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-03-09 09:40 — Сообщение #4416 ([ссылка](https://t.me/i_odmin_book/4416))
 
 Stress – это инструмент командной строки Linux, который позволяет нагружать процессор, память, систему ввода-вывода и диск
@@ -355,36 +430,6 @@ https://max.ru/mockva_life Свежие новости Москвы
 
 👉 @i_odmin_book
 
-### 2026-02-24 12:55 — Сообщение #4404 ([ссылка](https://t.me/i_odmin_book/4404))
-
-🎥 Вебинар по Linux: С Windows на Linux: первый шаг системного администратора
-
-На вебинаре вы узнаете:
-- В чем принципиальные отличия Linux и Windows
-- Какие базовые команды нужны для работы в консоли Linux
-- Как устроена файловая система Linux и где искать нужные файлы
-
-
-В результате вебинара вы:
-- Научитесь выполнять базовые команды в терминале Linux
-- Поймете структуру файловой системы и принципы работы с файлами
-- Сможете устанавливать программы и управлять пакетами
-- Разберетесь, как адаптироваться к Linux после Windows
-
-
-👉 Для участия зарегистрируйтесь: https://vk.cc/cUL7gg
-
-
-🎁 Все участники вебинара получат специальные условия на полное обучение курса "Administrator Linux. Basic"
-
-Курс создан для тех, кто хочет перейти от случайного опыта к уверенной работе с сервером. Вы освоите основы операционной системы, научитесь работать в Bash, поймёте, как устроены сети, научитесь запускать веб-сервисы, работать с MySQL, Docker, Git, Prometheus и Grafana. Это фундамент, без которого невозможен дальнейший рост.
-
-
-👉 Повысить свои навыки: https://vk.cc/cUL7db
-
-
-Реклама. ООО «Отус онлайн-образование», ОГРН 1177746618576
-
 ### 2026-02-23 11:03 — Сообщение #4403 ([ссылка](https://t.me/i_odmin_book/4403))
 
 Совет по Linux 💡🐧
@@ -462,25 +507,6 @@ https://codingpackets.com/blog/mikrotik-config-cheatsheet/
 📲 Мы в Max
 
 👉 @i_odmin_book
-
-### 2026-02-19 11:16 — Сообщение #4396 ([ссылка](https://t.me/i_odmin_book/4396))
-
-💻 Открытый урок «Underlay для фабрики: iBGP vs eBGP. Тонкости дизайна, особенности, нюансы»
-
-📌 26 февраля в 20:00 МСК
-
-Бесплатно. Урок в рамках старта курса «Дизайн сетей ЦОД» от Otus.
-
-Мы все поняли, что Clos-топологии это правильно, масштабируемо и перспективно. Часто построение сетевой фабрики начинается с вопроса: "на чем строить Underlay ?" OSPF, IS-IS или все-таки BGP? 
-
-Поговорим на занятии:
-- почему не нужно бояться BGP over BGP, 
-- как выбрать между iBGP и eBGP и почему разговоры о медленной конвергенции BGP в ЦОД остались в прошлом
-- обсудим тонкости элегантной конфигурации на оборудовании разных вендоров и нюансы эксплуатации.
-
-➡️ Ссылка на регистрацию: https://vk.cc/cUAuu9
-
-Реклама. ООО «Отус онлайн-образование», ОГРН 1177746618576
 
 ### 2026-02-19 10:14 — Сообщение #4395 ([ссылка](https://t.me/i_odmin_book/4395))
 
@@ -766,24 +792,6 @@ SELECT * FROM table_1 as tab1 LEFT JOIN table_2 as tab2 ON (tab1.field = tab2.fi
 
 👉 @i_odmin_book
 
-### 2026-02-12 11:03 — Сообщение #4383 ([ссылка](https://t.me/i_odmin_book/4383))
-
-Способы обмена данными между приложением и драйвером. Бесплатный вебинар — 19 февраля в OTUS
-
-Обмен данными между пользовательским приложением и драйвером — ключевая тема как для разработки, так и для реверс-инжиниринга драйверов Windows. Без понимания этих механизмов невозможно корректно анализировать поведение низкоуровневого ПО.
-
-— На открытом уроке разберём основные способы взаимодействия user-mode и kernel-mode. 
-— Поговорим про IRP-пакеты, IOCTL и различные типы ввода-вывода — буферизованный, прямой и небуферизованный. 
-— На практике покажем, как реализовать обмен данными между приложением и драйвером разными способами.
-
-Урок подойдёт системным программистам и вирусным аналитикам, работающим с драйверами и внутренним устройством Windows.
-
-👉 Записаться: https://vk.cc/cUkW1Z
-
-Этот вебинар проходит в формате открытого урока в прямом эфире курса «Reverse Engineering».
-
-Реклама. ООО «Отус онлайн‑образование», ОГРН 1177746618576
-
 ### 2026-02-12 08:49 — Сообщение #4382 ([ссылка](https://t.me/i_odmin_book/4382))
 
 Стратегии аварийного восстановления в облаке
@@ -965,22 +973,6 @@ netstat -pnltu — посмотреть список используемых п
 📲 Мы в Max
 
 👉 @i_odmin_book
-
-### 2026-02-05 14:02 — Сообщение #4378 ([ссылка](https://t.me/i_odmin_book/4378))
-
-Где вы окажетесь завтра, зависит от того, что вы изучаете сегодня. PostgreSQL — инструмент, который ищут компании, а грамотных специалистов по нему все еще немного. 
-
-Почему именно PostgreSQL? Потому что это не просто база данных, а сердце ваших проектов. Если вы администратор БД, разработчик, DevOps или администратор Linux, этот курс — ваш апгрейд. 
-
-Мы научим настраивать кластеры, оптимизировать производительность, разбираться с блокировками и решать задачи работы с большими объемами данных. А также живые лекции, практические задания и диплом, который признают лидеры рынка. Учитесь у практиков, которые знают, как решать реальные задачи, и получите навыки, за которые платят топовые компании.
-
-Присоединяйтесь к курсу «PostgreSQL для администраторов баз данных и разработчиков» сейчас и начните свой путь к высокооплачиваемой карьере! 
-
-Оставить заявку: https://vk.cc/cU59iX
-
-🎁Бонус: скидка 5% на обучение по промокоду go_dba. Предложение действительно до 12.02 
-
-Реклама. ООО «Отус онлайн-образование», ОГРН 1177746618576
 
 ### 2026-02-05 12:10 — Сообщение #4377 ([ссылка](https://t.me/i_odmin_book/4377))
 
