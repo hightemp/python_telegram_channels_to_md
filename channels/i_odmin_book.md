@@ -10,6 +10,30 @@
 
 
 ---
+### 2026-04-13 08:19 — Сообщение #4454 ([ссылка](https://t.me/i_odmin_book/4454))
+
+Управление сервисами systemd через утилиту systemctl
+
+systemctl start name.service – запуск сервиса.
+systemctl stop name.service — остановка сервиса
+systemctl restart name.service — перезапуск сервиса
+systemctl try-restart name.service — перезапуск сервиса только, если он запущен
+systemctl reload name.service — перезагрузка конфигурации сервиса
+systemctl status name.service — проверка, запущен ли сервис с детальным выводом состояния сервиса
+systemctl is-active name.service — проверка, запущен ли сервис с простым ответом: active или inactive
+systemctl list-units --type service --all – отображение статуса всех сервисов
+systemctl enable name.service – активирует сервис (позволяет стартовать во время запуска системы)
+systemctl disable name.service – деактивирует сервис
+systemctl reenable name.service – деактивирует сервис и сразу активирует его
+systemctl is–enabled name.service – проверяет, активирован ли сервис
+systemctl list-unit-files --type service – отображает все сервисы и проверяет, какие из них активированы
+systemctl mask name.service – заменяет файл сервиса симлинком на /dev/null, делая юнит недоступным для systemd
+systemctl unmask name.service – возвращает файл сервиса, делая юнит доступным для systemd
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-04-10 09:05 — Сообщение #4453 ([ссылка](https://t.me/i_odmin_book/4453))
 
 Шпаргалка по run командам Windows
