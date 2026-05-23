@@ -2,6 +2,16 @@ telegram:
   api_id: 123456            # возьмите на my.telegram.org (API development tools)
   api_hash: "0123456789abcdef0123456789abcdef"
   session: "tg_session"     # имя локального .session файла
+  proxy:
+    enabled: false           # true, чтобы подключаться к Telegram через прокси
+    type: "socks5"           # socks5, socks4 или http
+    host: "127.0.0.1"
+    port: 9050
+    rdns: true               # DNS-резолв через прокси
+    username: null           # если требуется авторизация
+    password: null
+    # Вместо полей выше можно указать URL:
+    # url: "socks5://user:password@127.0.0.1:9050?rdns=true"
 
 output:
   dir: "channels"           # куда сохранять .md

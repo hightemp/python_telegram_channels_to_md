@@ -22,6 +22,35 @@ $ make
 python -m venv .venv
 . .venv/bin/activate   
 # Windows: .venv\Scripts\activate
-pip install telethon pyyaml
+pip install telethon pyyaml "python-socks[asyncio]"
 python download_channels.py
+```
+
+## Прокси
+
+Прокси для подключения к Telegram задаётся в `config.yaml`:
+
+```yaml
+telegram:
+  proxy:
+    enabled: true
+    type: "socks5"          # socks5, socks4 или http
+    host: "127.0.0.1"
+    port: 9050
+    rdns: true
+    username: null
+    password: null
+```
+
+Можно использовать URL-формат:
+
+```yaml
+telegram:
+  proxy: "socks5://user:password@127.0.0.1:9050?rdns=true"
+```
+
+Для systemd или временного запуска доступна переменная окружения `TELEGRAM_PROXY_URL`; она имеет приоритет над `config.yaml`:
+
+```console
+TELEGRAM_PROXY_URL='socks5://127.0.0.1:9050?rdns=true' python download_channels.py
 ```

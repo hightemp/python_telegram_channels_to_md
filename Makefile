@@ -57,7 +57,7 @@ venv:
 
 install: venv
 	@$(PIP) install --upgrade pip setuptools wheel
-	@$(PIP) install telethon pyyaml
+	@$(PIP) install telethon pyyaml "python-socks[asyncio]"
 
 config:
 	@if [ ! -f "config.yaml" ]; then \
