@@ -10,6 +10,35 @@
 
 
 ---
+### 2026-06-01 08:11 — Сообщение #4530 ([ссылка](https://t.me/i_odmin_book/4530))
+
+Cisco (защищаем доступ)
+
+Установим пароль на доступ через консольный порт:
+line console 0
+login
+password password
+
+Создаём access-list с разрешёнными для доступа сетями или хостами (пишем сети с обратной маской):
+access-list 1 permit 192.168.1.0 0.0.0.255 
+access-list 1 permit 192.168.2.0 0.0.0.255
+
+Отключаем доступ по виртуальному терминалу для протокола telnet и применяем ранее созданный access-list для ограничения доступа по ssh:
+line vty 0 4 
+transport input ssh 
+access-class 1 in 
+privilege level 15 
+login local 
+
+Добавляем watch for login Attacks
+login block-for 600 attempts 2 within 30 
+login delay 5 
+login quiet-mode access-class 1 
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-05-31 09:55 — Сообщение #4529 ([ссылка](https://t.me/i_odmin_book/4529))
 
 🚀 Подборка полезных IT каналов в Max
