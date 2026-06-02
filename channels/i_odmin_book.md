@@ -10,6 +10,78 @@
 
 
 ---
+### 2026-06-02 08:23 — Сообщение #4531 ([ссылка](https://t.me/i_odmin_book/4531))
+
+Cisco. ACL
+
+Стандартные ACL
+access-list 100 permit host 172.16.6.0 0.0.0.255
+access-list 100 deny host 172.16.6.0 0.0.0.255
+
+Расширенные ACL
+ip access-list extended TEST
+ permit tcp host 172.16.6.66 host 172.16.0. eq ftp
+ permit tcp host 172.16.6.66 gt 1023 any eq www
+
+ПРАВИЛА ПРОВЕРЯЮТСЯ СВЕРХУ ВНИЗ. КАК ТОЛЬКО ПРОВЕРКА ДОХОДИТ ДО ПРАВИЛА ПОД КОТОРОЕ ПАКЕТ ПОДПАДАЕТ, ПРОВЕРКА ПРЕКРАЩАЕТСЯ, НЕЗАВИСИМО ОТ ТОГО КАКИЕ ПРАВИЛА ИДУТ ДАЛЬШЕ.
+
+В КОНЦЕ ЗАДАЁТСЯ НЕЯВНОЕ ПРАВИЛО
+
+deny ip any any
+Т.Е. ЕСЛИ ЯВНО ЧТО-ТО НЕ РАЗРЕШИТЬ СВЕРХУ, ТО ЭТО БУДЕТ ЗАПРЕЩЕНО
+
+Вешаем ACL на интерфейс(in или out)
+ip access-group TEST out
+
+Иногда необходимо удалить конкретную запись в access-list(для примера ip 94.123.2.139). Для этого, сначала смотрим порядковые номера записей
+# show access-lists
+Standard IP access list 1
+   10 permit 185.40.30.134
+   20 permit 94.141.60.123
+   30 permit 94.123.2.139
+   90 permit 88.196.234.16
+   50 permit 222.251.243.67
+   40 permit 143.35.7.238
+
+Затем удаляем нужную
+# conf t
+(config)# ip access-list s 1
+(config-ext-nacl)# no 30
+
+В данном случае S - Standard Access List
+Если вдруг понадобилось вставить запись в конкретное место, делаем так
+# conf t
+(config)# ip access-list s 1
+(config-ext-nacl)# 40 permit 94.123.2.139
+
+OBJECT-GROUP
+Предположим, надо составить ACL, выпускающий три определенных адреса в интернет по трем одинаковым портам c перспективой расширения количества адресов и портов.
+
+Создаём список разрешённых портов
+object-group service INET-PORTS
+description Ports allowed for some hosts
+tcp eq www
+tcp eq 8080
+tcp eq 443
+
+Создаём список разрешённых ипишек
+object-group network HOSTS-TO-INET
+description Hosts allowed to browse the net
+host 172.16.0.2
+host 172.16.0.3
+host 172.16.0.4
+
+Создаём ACL
+ip access-list extended INET-OUT
+permit object-group INET-PORTS object-group HOSTS-TO-INET any
+
+И в завершении вешаем ACL на интерфейс
+ip access-group TEST out
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-06-01 08:11 — Сообщение #4530 ([ссылка](https://t.me/i_odmin_book/4530))
 
 Cisco (защищаем доступ)
