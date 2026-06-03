@@ -4,6 +4,34 @@
 
 
 ---
+### 2026-06-03 11:50 — Сообщение #1063 ([ссылка](https://t.me/cybred/1063))
+
+Codex Discovered a Hidden HTTP/2 Bomb
+
+Домашний компьютер, подключенный к сети со скоростью 100 Мбит/с, может сделать уязвимый сервер недоступным в считанные секунды. В случае с Apache httpd и Envoy один клиент "забивает" 32 ГБ памяти сервера примерно за 20 секунд.
+
+Новая уязвимость, которая работает против NGINX, Apache HTTPD, Microsoft IIS, Envoy, и Cloudflare Pingora. 
+
+The bomb targets HPACK, HTTP/2's header compression scheme: one byte on the wire becomes one full header allocation on the server, repeated thousands of times per request. The hold is a zero-byte flow-control window that keeps the server from ever freeing any of it.
+
+Shodan: ssl.alpn:"h2" product:nginx,Apache,IIS,Envoy,Pingora
+
+PoC: http2-bomb
+
+### 2026-06-03 08:00 — Сообщение #1062 ([ссылка](https://t.me/cybred/1062))
+
+"That sounds impossible" — ответила техподдержка на баг, через который на днях увели старую учётку Обамы в инсте.
+
+А тем временем еще один ресерчер, как и Nightmare Eclipse, не вынес MSRC и слил собственный 0day в паблик. Сотрудник Google Ammar Askar рассказал, как с помощью одного клика можно украсть OAuth-токен GitHub с полным доступом ко всем твоим репозиториям, включая приватные.
+
+> GitHub имеет фичу github.dev — лёгкий VSCode прямо в браузере. Чтобы он работал, GitHub передаёт туда токен, не привязанный к конкретному репо — он открывает доступ ко всему.
+
+> VSCode изолирует ненадёжный контент (типа превью для Markdown) в <iframe> другого домена. Но чтобы горячие клавиши работали внутри webview, VSCode пробрасывает события клавиатуры (did-keydown) с помощью пост-месседжей в основное окно.
+
+И вот проблема: любой unsafe JS таким образом внутри webview может сам "нажимать клавиши" в основном окне вместо тебя.
+
+Через хитрую комбинацию (рекомендованные расширения + локальные workspace-расширения, которые обходят проверку доверия издателя) хакер эмулирует нажатия клавиш, тихо ставит своё расширение и получает исполнение кода в основном контексте, вместе с кражей самого токена.
+
 ### 2026-05-24 15:45 — Сообщение #1061 ([ссылка](https://t.me/cybred/1061))
 
 APKImpure
