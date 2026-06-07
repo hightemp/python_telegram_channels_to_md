@@ -10,6 +10,95 @@
 
 
 ---
+### 2026-06-07 17:47 — Сообщение #4535 ([ссылка](https://t.me/i_odmin_book/4535))
+
+🚀 Подборка полезных IT каналов в Max
+
+
+Системное администрирование, DevOps 📌
+
+https://max.ru/i_odmin Все для системного администратора
+https://max.ru/bash_srv Bash Советы
+https://max.ru/sysadminof Книги для админов, полезные материалы
+https://max.ru/i_odmin_book Библиотека Системного Администратора
+https://max.ru/i_devops DevOps: Пишем о Docker, Kubernetes и др.
+https://max.ru/tipsysdmin Типичный Сисадмин
+
+Excel лайфхак 📌
+https://t.me/Excel_lifehack Excel лайфхак 
+
+1C разработка 📌
+https://max.ru/odin1c_rus Cтатьи, курсы, советы, шаблоны кода 1С
+
+Программирование C++📌
+https://max.ru/cpp_lib Библиотека C/C++ разработчика
+
+Программирование Go📌
+https://max.ru/golang_lib Библиотека Go (Golang) разработчика
+
+Программирование React📌
+https://max.ru/react_lib React
+
+Программирование Python 📌
+https://max.ru/python_of Python академия. 
+https://max.ru/BookPython Библиотека Python разработчика
+
+Java разработка 📌
+https://max.ru/bookjava Библиотека Java разработчика
+
+GitHub Сообщество 📌
+https://max.ru/githublib Интересное из GitHub
+
+Базы данных (Data Base) 📌
+https://max.ru/database_info Все про базы данных
+
+Фронтенд разработка 📌
+https://max.ru/frontend_1 Подборки для frontend разработчиков
+
+Библиотеки 📌
+https://max.ru/programmist_of Книги по программированию
+https://max.ru/proglb Библиотека программиста
+https://max.ru/bfbook Книги для программистов
+
+Программирование 📌
+https://max.ru/bookflow Лекции, видеоуроки, доклады с IT конференций
+https://max.ru/itmozg Программисты, дизайнеры, новости из мира IT
+https://max.ru/php_lib    Библиотека PHP программиста 👨🏼‍💻👩‍💻
+
+Шутки программистов 📌
+https://max.ru/itumor Шутки программистов
+
+Защита, взлом, безопасность 📌
+https://max.ru/thehaking Канал о кибербезопасности
+https://max.ru/xakkep_1 Хакер Free
+
+Книги, статьи для дизайнеров 📌
+https://max.ru/odesigners Статьи, книги для дизайнеров
+
+Математика 📌
+https://max.ru/Pomatematike Канал по математике
+https://max.ru/phismat_1 Обучающие видео, книги по Физике и Математике
+
+Вакансии 📌 
+https://max.ru/progjob Вакансии в IT
+
+Мир технологий 📌 
+https://max.ru/mir_teh Канал для любознательных
+
+
+Бонус 📌 
+https://max.ru/piterspb_78 Свежие новости Санкт-Петербурга
+https://max.ru/mockva_life Свежие новости Москвы
+https://max.ru/piterspb Питер Новости: Санкт-Петербург / СПБ / ДТП
+
+### 2026-06-07 14:06 — Сообщение #4534 ([ссылка](https://t.me/i_odmin_book/4534))
+
+🔥Обзор всех команд Linux
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-06-04 11:26 — Сообщение #4533 ([ссылка](https://t.me/i_odmin_book/4533))
 
 Как использовать команду grep в linux
