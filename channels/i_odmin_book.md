@@ -10,6 +10,45 @@
 
 
 ---
+### 2026-06-09 09:17 — Сообщение #4537 ([ссылка](https://t.me/i_odmin_book/4537))
+
+Проверяем доступность портов с использованием nmap/netcat/telnet/nc
+
+Доступность tcp-порта
+netcat
+netcat [options] host port
+сканер портов:
+netcat -z -v domain.com 1-1000
+
+запустить netcat на хосте и слушать на tcp порте 4444:
+netcat -l 4444
+
+а на другой машине проверить подключение к netcat, запущенному на другом хосте:
+netcat domain.com 4444
+
+nc
+nc -vt <ip> <port>
+
+telnet
+telnet <ip> <port>
+
+nmap
+порт 25 tcp: nmap -p25 11.11.11.11
+
+Доступность udp-порта
+netcat
+netcat -u host port
+
+nc
+nc -vu <ip> <port>
+
+nmap
+доступность порта udp 53: nmap -sU -p U:53 11.1.11.12
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-06-08 09:06 — Сообщение #4536 ([ссылка](https://t.me/i_odmin_book/4536))
 
 Шпаргалка по клавиатурным сочетаниям Midnight Commander
