@@ -4,6 +4,22 @@
 
 
 ---
+### 2026-06-10 19:30 — Сообщение #1065 ([ссылка](https://t.me/cybred/1065))
+
+Пока они фиксят, он компилирует новый PoC
+
+После того, как Microsoft снесла все репозитории Nightmare Eclipse с GitHub и GitLab, сообщество не позволило знаниям исчезнуть. Энтузиасты собрали все эксплойты и сохранили на отдельном сайте, которым поделился сам исследователь.
+
+— RoguePlanet (10.06): LPE до SYSTEM через Microsoft Defender
+— MiniPlasma (17.05) — LPE через драйвер cldflt.sys
+— GreenPlasma (13.05) — LPE через CTFMON
+— YellowKey (13.05) — обход BitLocker
+— RedSun (16.04) — LPE до SYSTEM через Defender
+— UnDefend (16.04) — отключение/обход защиты и обновлений Defender
+— BlueHammer (03.04) — LPE до SYSTEM через компоненты Defender.
+
+Зеркало включает все прошлые зеродеи, в том числе RoguePlanet, вышедший вчера.
+
 ### 2026-06-05 09:29 — Сообщение #1064 ([ссылка](https://t.me/cybred/1064))
 
 Codex for Open Source
