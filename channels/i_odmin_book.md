@@ -10,6 +10,114 @@
 
 
 ---
+### 2026-06-30 08:35 — Сообщение #4566 ([ссылка](https://t.me/i_odmin_book/4566))
+
+🛡 Шпаргалка для сисадмина: SSH + Безопасность
+
+🔑 Подключение и передача файлов
+
+
+# Подключение к серверу
+ssh user@host
+
+# Копирование файла
+scp file.txt user@host:/path/
+
+# SFTP-сессия
+sftp user@host
+
+# Синхронизация директорий
+rsync -avz -e ssh /local/path user@host:/remote/path
+
+
+
+⚙️ Настройка /etc/ssh/sshd_config
+
+
+Port 2222                # Меняем порт
+PermitRootLogin no       # Запрет root-входа
+PasswordAuthentication no  # Только по ключам
+MaxAuthTries 3           # Лимит попыток входа
+AllowUsers admin user1   # Белый список пользователей
+
+
+Перезапуск:
+
+
+systemctl restart sshd
+
+
+
+🔒 Ключи SSH
+
+
+# Генерация ключа
+ssh-keygen -t ed25519 -C "admin@myserver"
+
+# Установка ключа на сервер
+ssh-copy-id -i ~/.ssh/id_ed25519.pub user@host
+
+
+
+🛡 Fail2Ban
+
+Установка и запуск:
+
+
+apt install fail2ban      # Debian/Ubuntu
+yum install fail2ban      # CentOS/RHEL
+systemctl enable --now fail2ban
+
+
+Конфиг /etc/fail2ban/jail.local:
+
+
+[sshd]
+enabled = true
+port    = 2222
+filter  = sshd
+maxretry = 3
+bantime  = 3600
+
+
+
+🔥 Firewall
+
+UFW
+
+
+ufw allow 2222/tcp
+ufw enable
+ufw status
+
+
+iptables
+
+
+iptables -A INPUT -p tcp --dport 2222 -j ACCEPT
+iptables -A INPUT -j DROP
+
+
+firewalld
+
+
+firewall-cmd --permanent --add-port=2222/tcp
+firewall-cmd --reload
+
+
+
+💡 Советы по безопасности:
+
+1. 🚫 Не пускаем root по SSH
+2. 🔑 Только ключи, никаких паролей
+3. 📌 Ставим нестандартный порт
+4. 🛡 Лимитируем доступ по IP
+5. 🚨 Включаем Fail2Ban
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-06-29 10:32 — Сообщение #4565 ([ссылка](https://t.me/i_odmin_book/4565))
 
 Интернет кажется чем-то само собой разумеющимся ровно до того момента, пока сеть не начинает работать нестабильно. За надёжным соединением стоят десятки решений, протоколов и механизмов маршрутизации, которые определяют, как данные найдут правильный путь.
