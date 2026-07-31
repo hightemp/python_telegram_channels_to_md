@@ -4,6 +4,8 @@
 > 
 > Связаться с автором: @servers
 > 
+> Реклама на канале не размещается.
+> 
 > Заметки в браузере: https://journald.ru/
 > 
 > Буст канала: https://t.me/sysadminnotes?boost
@@ -12,6 +14,22 @@
 
 
 ---
+### 2026-07-31 21:33 — Сообщение #4028 ([ссылка](https://t.me/SysadminNotes/4028))
+
+📺 Ну и будь-то бы сильно упарываться этим пятничным вечером не хочется, но отвлечься на что-то такое этакое можно. Вот, например, материалы с прошедшего Debconf '26 - https://debconf26.debconf.org/schedule/ Вот на что предложил бы обратить внимание:
+
+- Abstraction Leaks: Why Understanding Linux Internals Still Matters;
+- Debian in Disaster + Security Incidents;
+- How a 27 years old communication protocol is still relevant today: Jabber/XMPP!
+
+Есть ещё и другие материалы, BoF сессии общения и обсуждения, но это уже на любителя и желающего.
+
+#debian #видео #напосмотреть
+
+### 2026-07-31 21:13 — Сообщение #4027 ([ссылка](https://t.me/SysadminNotes/4027))
+
+Камрады, с днём системного администратора вас! Пусть даже в современном мире победившего нейровсего ваши знания, умения и навыки остаются на пике, и остаются востребованными. 💞
+
 ### 2026-07-29 12:40 — Сообщение #4026 ([ссылка](https://t.me/SysadminNotes/4026))
 
 📔 Debian 13 homelab projects.
