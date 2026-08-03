@@ -10,6 +10,81 @@
 
 
 ---
+### 2026-08-03 08:57 — Сообщение #4618 ([ссылка](https://t.me/i_odmin_book/4618))
+
+Cisco Commands. IP
+
+IP Address Configuration
+
+IPv4
+Switch Interfaces
+Layer-3-Switch switchport access vlan
+Note: First you have to disable ip routing on the switch with the no ip routing command.
+
+L3-Switch(config)# interface <interface>
+L3-Switch(config-if)# no shutdown
+L3-Switch(config-if)# description <interface-description>
+L3-Switch(config-if)# switchport mode access
+L3-Switch(config-if)# switchport access vlan <vlan-number>
+
+
+Layer-3-Switch routed port
+Note: First you have to change your switchport into a routed port with the no switchport command.
+
+L3-Switch(config)# interface <interface>
+L3-Switch(config-if)# no switchport
+L3-Switch(config-if)# description <interface-description>
+L3-Switch(config-if)# ip address <ip-address> <subnet-mask>
+
+
+Switched Virtual Interface (SVI)
+Switch(config)# interface vlan <vlan-number>
+Switch(config-if)# description <vlan-interface-description>
+Switch(config-if)# ip address <ip-address> <subnet-mask>
+
+
+Router Interfaces
+Router(config)# interface <interface>
+Router(config-if)# description <interface-description>
+Router(config-if)# ip address <ip-address> <subnet-mask>
+
+
+Loopback Interfaces
+Note: An loopback interface is a stable virtual interface on which you can assign layer 3 addresses. It can be used on Cisco switches and routers.
+
+Switch-or-Router(config)#interface Loopback <loopback-number>
+Switch-or-Router(config-if)# ip address <ip-address> <subnet-mask>
+
+
+IPv6
+Switch Interfaces
+Layer-3-Switch routed port
+Note: First you have to change your switchport into a routed port with the no switchport command.
+
+Switch(config)# interface <interface>
+Switch(config-if)# no switchport
+Switch(config-if)# description <interface description>
+Switch(config-if)# ipv6 address <ip-address>/<subnet-mask>
+Switch(config-if)# ipv6 address <link-local ip-address> link-local
+
+
+Switched Virtual Interface (SVI)
+Switch(config)# interface vlan <vlan-number>
+Switch(config-if)# description <interface description>
+Switch(config-if)# ipv6 address <ip-address>/<subnet-mask>
+Switch(config-if)# ipv6 address <link-local ip-address> link-local
+
+
+Router Interfaces
+Router(config)# interface <interface>
+Router(config-if)# description <interface-description>
+Router(config-if)# ipv6 address <ip-address>/<subnet-mask>
+Router(config-if)# ipv6 address <link-local-ip-address> link-local
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-08-01 11:31 — Сообщение #4617 ([ссылка](https://t.me/i_odmin_book/4617))
 
 OSI vs TCP IP
