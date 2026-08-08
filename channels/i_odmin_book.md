@@ -10,6 +10,109 @@
 
 
 ---
+### 2026-08-08 15:00 — Сообщение #4632 ([ссылка](https://t.me/i_odmin_book/4632))
+
+🚀 Подборка полезных IT каналов в Max
+
+
+Системное администрирование, DevOps 📌
+
+https://max.ru/i_odmin Все для системного администратора
+https://max.ru/bash_srv Bash Советы
+https://max.ru/sysadminof Книги для админов, полезные материалы
+https://max.ru/i_odmin_book Библиотека Системного Администратора
+https://max.ru/i_devops DevOps: Пишем о Docker, Kubernetes и др.
+https://max.ru/tipsysdmin Типичный Сисадмин
+https://max.ru/channel_win_sysadmin Системный Администратор Windows
+https://max.ru/channel_linux_admin Linux: Системный администратор
+https://max.ru/channel_linuxmod Linux
+https://max.ru/channel_i_linux Системный администратор
+https://max.ru/channel_devopslib DevOps, SRE, Sysadmin
+https://max.ru/channel_devops_star DevOps Star (Звезда Девопса)
+
+Excel лайфхак 📌
+https://t.me/Excel_lifehack Excel лайфхак 
+
+Английский с нуля 🇬🇧
+https://max.ru/UchuEnglish
+
+1C разработка 📌
+https://max.ru/odin1c_rus Cтатьи, курсы, советы, шаблоны кода 1С
+https://max.ru/channel_DevLab1C 1С:Предприятие 8
+
+Программирование C++📌
+https://max.ru/cpp_lib Библиотека C/C++ разработчика
+https://max.ru/channel_cpp_geek C++ geek
+
+Программирование Go📌
+https://max.ru/golang_lib Библиотека Go (Golang) разработчика
+
+Программирование React📌
+https://max.ru/react_lib React
+
+Программирование Rust📌
+https://max.ru/channel_rust_lib 
+
+Программирование Python 📌
+https://max.ru/python_of Python академия. 
+https://max.ru/BookPython Библиотека Python разработчика
+
+Java разработка 📌
+https://max.ru/bookjava Библиотека Java разработчика
+https://max.ru/channel_java_geek Java Geek
+
+GitHub Сообщество 📌
+https://max.ru/githublib Интересное из GitHub
+
+Базы данных (Data Base) 📌
+https://max.ru/database_info Все про базы данных
+
+Фронтенд разработка 📌
+https://max.ru/frontend_1 Подборки для frontend разработчиков
+
+Библиотеки 📌
+https://max.ru/programmist_of Книги по программированию
+https://max.ru/proglb Библиотека программиста
+https://max.ru/bfbook Книги для программистов
+
+Программирование 📌
+https://max.ru/bookflow Лекции, видеоуроки, доклады с IT конференций
+https://max.ru/itmozg Программисты, дизайнеры, новости из мира IT
+https://max.ru/php_lib    Библиотека PHP программиста 👨🏼‍💻👩‍💻
+
+Шутки программистов 📌
+https://max.ru/itumor Шутки программистов
+
+Защита, взлом, безопасность 📌
+https://max.ru/thehaking Канал о кибербезопасности
+https://max.ru/xakkep_1 Хакер Free
+
+Книги, статьи для дизайнеров 📌
+https://max.ru/odesigners Статьи, книги для дизайнеров
+
+Математика 📌
+https://max.ru/Pomatematike Канал по математике
+https://max.ru/phismat_1 Обучающие видео, книги по Физике и Математике
+
+Вакансии в IT📌 
+https://max.ru/progjob 
+https://max.ru/channel_rabotait
+
+Мир технологий 📌 
+https://max.ru/mir_teh Канал для любознательных
+
+Городские📌 
+https://max.ru/piterspb_78 Свежие новости Санкт-Петербурга
+https://max.ru/mockva_life Свежие новости Москвы
+https://max.ru/piterspb Питер Новости: Санкт-Петербург / СПБ / ДТП
+https://max.ru/channel_krasnodar_novosty Краснодар Новости
+https://max.ru/channel_novosibirsk_novosti Новосибирск 
+https://max.ru/channel_samara_novosti Новости Самары
+https://max.ru/channel_ekaterinburg_novosti Новости Екатеринбурга 
+https://max.ru/channel_kazan_novosti Новости Казани 
+https://max.ru/channel_omsk_novosti Новости Омска
+https://max.ru/channel_moskva_24 Москва 24
+
 ### 2026-08-06 09:25 — Сообщение #4631 ([ссылка](https://t.me/i_odmin_book/4631))
 
 Установка и настройка pfSense
