@@ -14,6 +14,14 @@
 
 
 ---
+### 2026-08-10 08:31 — Сообщение #4031 ([ссылка](https://t.me/SysadminNotes/4031))
+
+📦 Running microVMs in Proxmox VE, The Easy Way - автор запускает microvm на Proxmox и делится своим опытом по сопровождению такого стенда...
+
+https://taoofmac.com/space/blog/2026/06/18/1845
+
+#virtualization #microvm #proxmox
+
 ### 2026-08-09 16:39 — Сообщение #4030 ([ссылка](https://t.me/SysadminNotes/4030))
 
 📒 Продолжая нагонять пропущенное - в комментариях ещё несколько номеров Paged Out журнала...
