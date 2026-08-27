@@ -10,6 +10,22 @@
 
 
 ---
+### 2026-08-27 07:10 — Сообщение #4653 ([ссылка](https://t.me/i_odmin_book/4653))
+
+Шпаргалка по реестру Windows
+
+System info and accounts
+Software, services and programms
+Network, Share and Backups
+Hardware, printers and External/USB device
+Files and Folders
+
+https://github.com/Ahmed-AL-Maghraby/Windows-Registry-Analysis-Cheat-Sheet
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-08-26 09:44 — Сообщение #4652 ([ссылка](https://t.me/i_odmin_book/4652))
 
 Каталог /proc в Linux
