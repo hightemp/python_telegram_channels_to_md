@@ -10,6 +10,40 @@
 
 
 ---
+### 2026-09-03 10:42 — Сообщение #4664 ([ссылка](https://t.me/i_odmin_book/4664))
+
+Работа с сетью
+
+Отладка Linux
+
+# ethtool eth0 - Показать Ethernet статус 
+# ethtool -s eth0 speed 100 duplex full - Принудительная установка режима 100Mbit Full duplex
+# ethtool -s eth0 autoneg off - Отключить автоопределение
+# ethtool -p eth1 - Мигать индикатором сетевой карты - если поддерживается
+# ip link show - Список сетевых интерфейсов в Linux (подобна ifconfig)
+# ip link set eth0 up - Активировать сетевой интерфейс (или отключить). Аналог "ifconfig eth0 up"
+# ip addr show - Список всех IP адресов в Linux ( аналог ifconfig)
+# ip neigh show - Тоже что и arp -a
+
+Печать таблицы маршрутизации
+
+# route -n                  # Linux или используйте "ip route"
+# netstat -rn               # Linux, BSD и UNIX
+# route print               # Windows
+
+Используйте "add -p" что-бы сделать маршрут постоянным.Настройка дополнительных IP адресов Linux
+
+# ifconfig eth0 192.168.50.254 netmask 255.255.255.0       # Первый IP адрес
+# ifconfig eth0:0 192.168.51.254 netmask 255.255.255.0     # Второй IP адрес
+# ip addr add 192.168.50.254/24 dev eth0                   # Эквивалентные команды для ip
+# ip addr add 192.168.51.254/24 dev eth0 label eth0:1
+
+https://telegra.ph/Rabota-s-setyu-09-18
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-09-02 10:42 — Сообщение #4663 ([ссылка](https://t.me/i_odmin_book/4663))
 
 Подборка шпаргалок по работе с Vim
