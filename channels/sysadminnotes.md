@@ -14,6 +14,24 @@
 
 
 ---
+### 2026-09-13 11:58 — Сообщение #4044 ([ссылка](https://t.me/SysadminNotes/4044))
+
+🕹 Побаловаться на выходных - Quake на CSS, и Quake в ASCII. В браузере доступно по ссылкам:
+
+- https://cssquake.com/
+- http://asciiquake.wtf/
+
+Github проектов:
+
+- https://github.com/layoutit/cssQuake
+- https://github.com/apresmoi/asciiQuake
+
+P. S. Переключиться можно сразу на конкретный уровень, указав его в параметрах URL, например - https://cssquake.com/?map=e1m7
+
+#quake #игори
+
+### 2026-09-13 11:58 — Сообщение #4043 ([ссылка](https://t.me/SysadminNotes/4043))
+
 ### 2026-09-12 11:06 — Сообщение #4042 ([ссылка](https://t.me/SysadminNotes/4042))
 
 ⚙️ А вот тут менеджер виртуальных машин прямо в терминале - kudu. 
