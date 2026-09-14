@@ -14,6 +14,17 @@
 
 
 ---
+### 2026-09-14 20:32 — Сообщение #4045 ([ссылка](https://t.me/SysadminNotes/4045))
+
+💿 Cracking the Linux Boot Code - занятное чтиво от инженеров Oracle о диагностике запуска и загрузки системы...
+
+- Linux Boot-Time Diagnostics Foundations;
+- Deep-Dive Linux Boot Diagnostics.
+
+Первая статья описывает базовые методы диагностики загрузки, а вторая показывает углублённые техники и подходы.
+
+#linux #boot #debug
+
 ### 2026-09-13 11:58 — Сообщение #4044 ([ссылка](https://t.me/SysadminNotes/4044))
 
 🕹 Побаловаться на выходных - Quake на CSS, и Quake в ASCII. В браузере доступно по ссылкам:
