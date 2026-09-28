@@ -10,6 +10,95 @@
 
 
 ---
+### 2026-09-28 11:30 — Сообщение #4683 ([ссылка](https://t.me/i_odmin_book/4683))
+
+Шпаргалка по основным командам и настройкам MikroTik (RouterOS)
+
+1. Основные команды работы с MikroTik:
+   
+Просмотр конфигурации
+- /export — экспорт текущей конфигурации.
+- /interface print — вывод списка интерфейсов.
+- /ip address print — вывод списка IP-адресов.
+- /ip route print — вывод таблицы маршрутизации.
+- /ip firewall filter print — вывод правил файрвола.
+
+Управление интерфейсами
+- /interface enable [имя_интерфейса] — включить интерфейс.
+- /interface disable [имя_интерфейса] — отключить интерфейс.
+- /interface set [имя_интерфейса] mtu=1500 — изменение MTU на интерфейсе.
+
+Управление IP-адресами
+- /ip address add address=192.168.1.1/24 interface=[имя_интерфейса] — добавить IP-адрес на интерфейс.
+- /ip address remove [номер] — удалить IP-адрес по номеру из списка.
+
+Настройка маршрутизации
+- /ip route add dst-address=0.0.0.0/0 gateway=[ip-шлюза] — добавить маршрут по умолчанию (интернет).
+- /ip route remove [номер] — удалить маршрут.
+
+2. Настройка DHCP:
+
+Настройка DHCP-сервера
+- /ip dhcp-server setup — пошаговая настройка DHCP-сервера.
+- /ip dhcp-server print — просмотр текущих DHCP-серверов.
+- /ip dhcp-server lease print — просмотр выданных IP-адресов (lease).
+- /ip dhcp-server network add address=192.168.1.0/24 gateway=192.168.1.1 — добавить сеть для раздачи IP-адресов.
+
+Настройка DHCP-клиента
+- /ip dhcp-client add interface=[имя_интерфейса] — добавить DHCP-клиента на интерфейс.
+- /ip dhcp-client print — просмотр DHCP-клиентов.
+
+3. Настройка NAT (для интернета):
+
+- /ip firewall nat add chain=srcnat action=masquerade out-interface=[интерфейс_WAN] — добавить правило NAT для выхода в интернет.
+
+4. Настройка VLAN:
+
+- /interface vlan add name=vlan10 vlan-id=10 interface=[имя_интерфейса] — создать VLAN с идентификатором 10 на интерфейсе.
+- /interface bridge vlan add bridge=[имя_моста] tagged=[интерфейс] vlan-ids=10 — добавить VLAN в мост.
+
+5. Настройка Firewall (Базовые правила):
+
+- /ip firewall filter add chain=input action=accept connection-state=established,related — разрешить уже установленные соединения.
+- /ip firewall filter add chain=input action=drop connection-state=invalid — отбросить невалидные пакеты.
+- /ip firewall filter add chain=forward action=drop connection-state=invalid — запретить невалидные соединения в цепочке forward.
+
+6. Настройка PPPoE (подключение к интернету через PPPoE):
+   
+- /interface pppoe-client add name=pppoe-out1 user=[логин] password=[пароль] interface=[WAN-интерфейс] — создать PPPoE-клиента.
+- /ip route add gateway=pppoe-out1 — добавить маршрут через PPPoE.
+
+7. Сохранение и восстановление конфигурации:
+
+Сохранение:
+- /system backup save name=[имя_файла] — сохранить полную конфигурацию.
+- /export file=[имя_файла] — экспорт конфигурации в текстовый файл.
+
+Восстановление:
+- /system backup load name=[имя_файла] — загрузить сохраненную конфигурацию.
+- /import file=[имя_файла] — импортировать текстовую конфигурацию.
+
+8. Диагностика:
+
+- /ping [ip-адрес] — пинг IP-адреса.
+- /tool traceroute [ip-адрес] — трассировка до IP-адреса.
+- /tool bandwidth-test address=[ip-адрес] direction=both — тест скорости соединения.
+
+9. Работа с пользователями:
+
+- /user add name=[имя_пользователя] group=full password=[пароль] — добавить пользователя с полными правами.
+- /user remove [имя_пользователя] — удалить пользователя.
+- /user print — показать список пользователей.
+
+0. Операции с логами:
+
+- /log print — просмотр последних логов.
+- /log print where topics~"[firewall]" — просмотр логов по определенной теме, например, firewall.
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-09-27 11:15 — Сообщение #4682 ([ссылка](https://t.me/i_odmin_book/4682))
 
 Шпаргалка по iptables
@@ -127,21 +216,6 @@
 📲 Мы в Max
 
 👉 @i_odmin_book
-
-### 2026-09-26 07:36 — Сообщение #4681 ([ссылка](https://t.me/i_odmin_book/4681))
-
-Ищете облачную платформу? Есть Beget
-
-✅ Аптайм 99,98% в дата-центрах Tier III
-✅ Техподдержка 24/7 — живые люди, без ботов
-✅ Прозрачная оплата без скрытых платежей
-✅ Более 200 000 клиентов доверяют Beget 
-
-Узнать больше
-
-#реклама 16+
-beget.com
-О рекламодателе
 
 ### 2026-09-25 10:12 — Сообщение #4680 ([ссылка](https://t.me/i_odmin_book/4680))
 
