@@ -4,6 +4,10 @@
 
 
 ---
+### 2026-10-08 09:27 — Сообщение #1073 ([ссылка](https://t.me/cybred/1073))
+
+⚠️ Confirmed: Metrics show a significant disruption to the network of Russian internet and cloud giant Yandex. Reports indicate a major fire at one of the company's data centers in Sasovo, Ryazan Oblast, #Russia, after a Ukrainian drone attack campaign.
+
 ### 2026-09-29 09:08 — Сообщение #1072 ([ссылка](https://t.me/cybred/1072))
 
 Ранее они же взломали Tez Tour, публикую полный киллчейн их прошлого взлома. В формате райтапа о том, как был скомпрометирован крупнейший туристический оператор, работающий на рынке с 1994 года.
