@@ -4,6 +4,16 @@
 
 
 ---
+### 2026-10-09 19:04 — Сообщение #1074 ([ссылка](https://t.me/cybred/1074))
+
+AnyPwn
+
+Эксплойт для AnyDesk Linux, который позволяет выполнять команды на удаленном компьютере без подтверждения подключения, достаточно указать только хост.
+
+Причина — целочисленное переполнение при обработке пакетов сессии. PoC работает гарантированно на версии 8.0.2, на более старых версиях не проверяли.
+
+Что удобно, служба AnyDesk всегда работает с повышенными правами, и это позволяет сразу получить root-доступ.
+
 ### 2026-10-08 09:27 — Сообщение #1073 ([ссылка](https://t.me/cybred/1073))
 
 ⚠️ Confirmed: Metrics show a significant disruption to the network of Russian internet and cloud giant Yandex. Reports indicate a major fire at one of the company's data centers in Sasovo, Ryazan Oblast, #Russia, after a Ukrainian drone attack campaign.
