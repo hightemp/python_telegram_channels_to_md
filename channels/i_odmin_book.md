@@ -10,6 +10,33 @@
 
 
 ---
+### 2026-10-14 08:04 — Сообщение #4695 ([ссылка](https://t.me/i_odmin_book/4695))
+
+Сброс сетевых настроек из командной строки Windows
+
+Сбросьте кэш DNS
+ipconfig /flushdns
+
+Сбросьте настройки WinSock
+netsh winsock reset
+
+Сброс настроек стека TCP/IP
+netsh int ip reset
+
+Для сброса настроек TCP/IPv6
+netsh int ipv6 reset
+
+Удалить все сетевые адаптеры
+netcfg -d
+
+Сброс всех правил Windows Defender Firewall
+netsh advfirewall reset
+
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-10-13 11:53 — Сообщение #4694 ([ссылка](https://t.me/i_odmin_book/4694))
 
 ИИ для мониторинга: что Prometheus и Grafana могут рассказать агенту
