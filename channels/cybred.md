@@ -4,6 +4,28 @@
 
 
 ---
+### 2026-10-30 10:05 — Сообщение #1079 ([ссылка](https://t.me/cybred/1079))
+
+В Claude Code для VS Code нашли бэкдор
+
+Версия 2.1.313 работает как обычно, но параллельно:
+— собирает и отправляет данные о системе
+— закрепляется через authorized_keys, LaunchAgent на macOs, и scheduled task на Windows
+— поднимает reverse SSH-туннель к 134.209.82.225.
+
+Вероятно, хакеры взломали сотрудника компании, после чего под ним опубликовали зараженное расширение.
+
+Если ставили эту версию — компьютер и все данные на нем можно считать скомпрометированными.
+
+UPD.: в статье уточнили, что малварь залили в Cursor Marketplace, Cursor зарегистрировал инцидент
+What is malicious:
+— Claude-code extension from Cursor marketplace version 2.1.313
+
+What is not malicious:
+— The @anthropic-ai/claude-code NPM package is NOT malicious
+— The OpenVSX extension is NOT malicious
+— The Microsoft VSCode extension for Claude is NOT malicious
+
 ### 2026-10-29 15:50 — Сообщение #1078 ([ссылка](https://t.me/cybred/1078))
 
 Пранки по телефону выходят на новый уровень
