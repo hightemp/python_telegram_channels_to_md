@@ -10,6 +10,116 @@
 
 
 ---
+### 2026-11-11 22:24 — Сообщение #4724 ([ссылка](https://t.me/i_odmin_book/4724))
+
+Как найти количество открытых файлов в Linux
+
+Чтобы узнать количество открытых файлов в Linux, можно воспользоваться следующими командами:
+
+1. Использовать lsof (List Open Files) для подсчета открытых файлов в системе:
+   
+   lsof | wc -l
+   
+   Эта команда покажет общее количество открытых файлов в системе, где wc -l подсчитывает количество строк, то есть количество открытых файлов.
+
+2. Использовать `/proc/sys/fs/file-nr` для просмотра счетчика открытых файлов:
+   
+   cat /proc/sys/fs/file-nr
+   
+   Этот файл содержит три числа, разделенные табуляцией:
+   - Первое число — текущее количество открытых файлов.
+   - Второе число — количество файлов, которые находятся в ожидании.
+   - Третье число — максимальное количество файлов, которое система может открыть.
+
+3. Подсчитать открытые файлы для определенного процесса:
+   Если нужно узнать количество открытых файлов конкретного процесса, можно использовать:
+   
+   lsof -p PID | wc -l
+   
+   Замените PID на идентификатор процесса, который вас интересует.
+
+4. Использовать lsof для подсчета открытых файлов конкретным пользователем:
+   
+   lsof -u username | wc -l
+   
+   Замените username на имя пользователя, чтобы увидеть количество открытых файлов этим пользователем. 
+
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
+### 2026-11-11 11:38 — Сообщение #4723 ([ссылка](https://t.me/i_odmin_book/4723))
+
+Раздел удалён, логический диск пропал, структура LVM повреждена. С чего начать восстановление и как не усугубить ситуацию первыми действиями? В такой момент важно понимать, какие метаданные пострадали и как устроено хранение данных.
+
+19 ноября в 20:00 на открытом уроке курса «Инфраструктура высоконагруженных систем» разберёте восстановление MBR, GPT и LVM после критических сбоев.
+
+Рассмотрите, как операционная система видит разделы и что происходит при их удалении. Сравните устройство MBR и GPT, разберёте принципы организации физических томов, групп томов и логических томов LVM.
+
+Практическая часть посвящена аварийным ситуациям — случайному удалению разделов и повреждению структур LVM. Познакомитесь с консольными утилитами gdisk и vgcfgrestore и их применением для восстановления структуры разделов и LVM.
+
+Отдельно разберёте признаки повреждения и порядок первоочередных действий при потере логических дисков. Это поможет осмысленно подходить к восстановлению и понимать, какие действия могут осложнить дальнейшую работу с данными.
+
+Урок будет полезен системным администраторам, DevOps- и SRE-инженерам, которые работают с физическими серверами и виртуальной инфраструктурой.
+
+Урок проведёт Андрей Буранов.
+
+Зарегистрироваться: https://vk.cc/d3O24V
+
+Реклама. ООО «Отус онлайн-образование», ОГРН 1177746618576, www.otus.ru
+
+### 2026-11-11 09:43 — Сообщение #4722 ([ссылка](https://t.me/i_odmin_book/4722))
+
+Шпаргалка по iptables
+
+1. Все правила обрабатываются сверху вниз. Как только правило совпадает, остальные игнорируются.
+2. Никогда не запускайте iptables -F, если правила по умолчанию - DROP, иначе ваша система будет недоступна. Если возможно, установите правило по умолчанию
+правило по умолчанию ACCEPT и добавьте iptables -A INPUT -j DROP в конце.
+
+Список всех правил
+iptables -L -n -v --line-numbers
+
+Flush all chains (-F) and delete all user-defined chains chains (-X)
+Note: Please ensure the default policy is ACCEPT or leave a ssh terminal before issuing
+iptables -F
+iptables -X
+
+Set default policy
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT DROP
+
+Block incoming ip address
+iptables -A INPUT -s aa.bb.cc.dd -j DROP
+
+Block outgoing sites
+iptables -A OUTPUT -p tcp -d www.microsoft.com -j DROP
+
+Allow ping from specific ip’s only
+iptables -A INPUT -s 1.2.3.0/24 -p icmp --icmp-type echo-request -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
+
+Allow ssh from specific ip’s only
+iptables -A INPUT -s 1.2.3.0/24 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j DROP
+
+Block incoming web access
+iptables -A input -p tcp --dport 80 -j DROP
+
+Port forward
+Forward incoming connection to another internal host (aa.bb.cc.dd:22)
+iptables -t nat -A PREROUTING -I eth0 -p tcp --dport 1022 -j DNAT --to aa.bb.cc.dd:22
+iptables -A FORWARD -p tcp -d aa.bb.cc.dd -dport 22 -m state --state NEW,ESTABLISH -j ACCEPT
+
+Delete a rule
+iptables -L -n -v --line-numbers
+iptables -D input {line-number}
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-11-10 08:26 — Сообщение #4721 ([ссылка](https://t.me/i_odmin_book/4721))
 
 Как активировать debug режим в bash?
