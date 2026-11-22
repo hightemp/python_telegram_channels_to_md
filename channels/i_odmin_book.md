@@ -10,6 +10,34 @@
 
 
 ---
+### 2026-11-22 14:59 — Сообщение #4733 ([ссылка](https://t.me/i_odmin_book/4733))
+
+🖥 Bash скрипт копирования файла на ftp
+
+
+#!/bin/sh
+ 
+FILE_NAME="path_of_file"
+ 
+HOST='IP Addr. of ftp server'
+ 
+USER='user_name'
+ 
+PASSWD='user_passwd'
+ 
+ftp -nv <<EOF
+open $HOST
+user $USER $PASSWD
+cd db_backups/PUNE/
+put $FILE_NAME
+ 
+EOF
+
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-11-21 11:51 — Сообщение #4732 ([ссылка](https://t.me/i_odmin_book/4732))
 
 🚀 Подборка полезных IT каналов в Max
