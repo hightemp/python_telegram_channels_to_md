@@ -10,6 +10,41 @@
 
 
 ---
+### 2026-11-26 09:50 — Сообщение #4736 ([ссылка](https://t.me/i_odmin_book/4736))
+
+🖥 Bash скрипт проверки существования файла, каталога, пользователя
+
+
+Проверка существования файла:
+
+
+?
+if ! [ -f /path/to/file ]; then
+echo 'No file'
+fi
+
+
+Проверка существования директории:
+
+
+if ! [ -d /path/directory/ ]; then
+echo 'No directory'
+fi
+
+
+Проверка существования пользователя:
+
+
+grep "username:" /etc/passwd >/dev/null
+if [ $? -ne 0 ]; then
+echo 'No username found'
+fi
+
+
+📲 Мы в Max
+
+👉 @i_odmin_book
+
 ### 2026-11-24 10:43 — Сообщение #4735 ([ссылка](https://t.me/i_odmin_book/4735))
 
 🖥 Bash скрипт перекодировки всех файлов в директории
